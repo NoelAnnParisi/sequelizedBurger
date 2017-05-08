@@ -1,0 +1,34 @@
+<div class='flex flex-column justify-center items-center'>
+	<h1 class='gold avenir'>It's Burger Time!</h1>
+	<img src='hamburger.png'>
+	<form action="/addBurger" method="POST">
+	    <label for="burger-name" class='gold avenir f6 b db mb2'>What kind of burger do you want?</label>
+	    <input type="text" class='db border-box hover-black w-100 measure ba b--black-20 pa2 br2 mb2' id="burger" name="newBurger">
+	  <button type="submit" class="avenir f6 grow no-underline br-pill ba ph3 pv2 mb2 dib black">Add Burger!</button>
+	</form>
+</div>
+
+<div class="flex justify-around">
+	<div class='flex-row flex-wrap'>
+		<h2 class='self-center green avenir'>Burgers up for grabs!</h2>
+		{{#each burger}}
+			{{#unless this.eaten}}
+		  		<form method="POST" action="/">
+		            <input input type="hidden" type="text" name="updateThis" value={{this.id}}><br>
+		            <button class="avenir f6 grow no-underline br-pill ba ph3 pv2 mb2 dib green" type="submit">EAT a {{this.burger_name}} burger!</button>
+		         </form>
+		  	{{/unless}}
+		{{/each}}
+	</div>
+	<div class='flex-row flex-wrap'>
+		<h2 class='avenir self-center red'>Burger's that have been eaten!</h2>
+		{{#each burger}}
+			{{#if this.eaten}}
+		  		<form>
+		            <input input type="hidden" type="text" name="burger_id" value={{this.id}}><br>
+		            <button type="submit" class="avenir f6 grow no-underline br-pill ba ph3 pv2 mb2 dib red">The {{this.burger_name}} burger has been eaten!</button>
+		         </form>
+		  	{{/if}}
+		{{/each}}
+	</div>
+</div>
