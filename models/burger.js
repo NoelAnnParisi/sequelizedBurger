@@ -1,32 +1,16 @@
 // Replacing your MySQL Burger model with a Sequelized equivalent.
-
-const Burger = {
-    // find all burgers
-    selectAllDevoured: callback => {
-        orm.selectAllDevoured(res => {
-            callback(res);
-        })
-    },
-    selectAllNotDevoured: callback => {
-        orm.selectAllNotDevoured(res => {
-            callback(res);
-        })
-    },
-
-    //Insert a particular burger into the not-devoured section
-    insertBurger: burger => {
-        orm.insertOne(burger, data => {
-            console.log("BURGER WAS INSERTED");
-        });
-    },
-
-    //Update a particular burger such that it is devoured
-    updateBurger: burger => {
-        orm.updateOne(burger, data => {
-            console.log('This is your data from burger.js', data);
-        });
-    }
+module.exports = (sequelize, DataTypes) => {
+    const Burger = sequelize.define('Burger', {
+      // burger_name VARCHAR(500) not null,
+      burger_name: DataTypes.STRING,
+      // eaten boolean,
+      eaten: DataTypes.BOOLEAN,
+      // time_created TIMESTAMP,
+      time_created: DataTypes.DATE
+    }, {
+    timestamps: false
+});
+    console.log(`typeof ${Burger}`);    
+    return Burger;
 
 };
-
-module.exports = { Burger: Burger };
