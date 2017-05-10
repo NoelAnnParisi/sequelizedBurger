@@ -1,4 +1,4 @@
-USE burgers_db;
+USE cqj5tbdwu6dmgiv2;
 
 insert into burgers(burger_name, eaten, time_created)
 values('Veggie Delight!', false, '2013-08-05 18:19:03');

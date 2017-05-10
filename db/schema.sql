@@ -1,4 +1,4 @@
--- CREATE DATABASE burgers_db;
+CREATE DATABASE cqj5tbdwu6dmgiv2;
 USE cqj5tbdwu6dmgiv2;
 CREATE TABLE burgers(
   id INT NOT NULL AUTO_INCREMENT,
